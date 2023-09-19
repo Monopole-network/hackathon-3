@@ -1,6 +1,6 @@
 import { Button, Icon, Tooltip } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { FaGlobeAmericas } from 'react-icons/fa';
+import { FaLightbulb } from 'react-icons/fa';
 
 const B2BBtn = () => {
   const router = useRouter();
@@ -19,7 +19,7 @@ const B2BBtn = () => {
           }}
           aria-label="projects button"
         >
-          <Icon height="22px" width="22px" as={FaGlobeAmericas} />
+          <Icon height="22px" width="22px" as={FaLightbulb} />
         </Button>
       ) : (
         <Button
@@ -32,7 +32,7 @@ const B2BBtn = () => {
           }}
           aria-label="projects button"
         >
-          <Icon height="22px" width="22px" color="#646587" as={FaGlobeAmericas} />
+          <Icon height="22px" width="22px" color="#646587" as={FaLightbulb} />
         </Button>
       )}
     </Tooltip>
