@@ -15,7 +15,7 @@ const B2BBtn = () => {
           background="transparent"
           border="2px solid #3A1888"
           onClick={() => {
-            router.push('/projects');
+            router.push('/formulaire');
           }}
           aria-label="projects button"
         >
@@ -28,7 +28,7 @@ const B2BBtn = () => {
           width="48px"
           background="transparent"
           onClick={() => {
-            router.push('/projects');
+            router.push('/formulaire');
           }}
           aria-label="projects button"
         >
