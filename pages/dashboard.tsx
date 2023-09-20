@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import RegistrationForm from '../components/RegistrationForm';
 import LoginForm from '../components/LoginForm';
-import { Box, Button, CloseButton, Flex } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, CloseButton, Flex, Heading, Icon, Image, Stack, Text } from '@chakra-ui/react';
+import { ArrowForwardIcon, CheckIcon, EditIcon } from '@chakra-ui/icons';
+import { FaShieldAlt } from 'react-icons/fa';
 
 const Dashboard: React.FC = () => {
   const [connected, setConnected] = useState<boolean>(false);
@@ -46,7 +48,7 @@ const Dashboard: React.FC = () => {
         {!connected ? (
           <>
             {showLoginForm || showRegistrationForm ? (
-              <CloseButton onClick={handleCloseForm} size='lg' ms="auto"/>
+              <CloseButton onClick={handleCloseForm} size='lg' ms="auto" />
             ) : (
               <>
                 <Box textAlign="center" display="flex" gap={10} flexDirection="column">
@@ -76,11 +78,72 @@ const Dashboard: React.FC = () => {
           </>
         ) : (
           <>
-            <h2>Informations de l'entreprise</h2>
-            <p>Nom de l'entreprise : {currentAccount?.companyName}</p>
-            <p>SIRET : {currentAccount?.companySiret}</p>
-            <p>Email : {currentAccount?.email}</p>
-            <button onClick={handleLogout}>Se déconnecter</button>
+            <Box display="flex" gap={10} width="100%" alignItems="center">
+              <Image
+                src="/building.png"
+                alt="building"
+                borderRadius="full"
+                height="100px"
+                width="100px"
+              />
+              <Box display="flex" flexDirection="column" width="100%" gap={3}>
+                <Box display="flex" flexDirection="row" width="100%">
+                  <Box flex="1">
+                    <Text fontSize='2xl' as="b">
+                      Hi, {currentAccount?.companyName} !
+                    </Text>
+                  </Box>
+                  <ButtonGroup>
+                    <Stack direction='row' spacing={3}>
+                      <Button leftIcon={<CheckIcon />} colorScheme='green' variant='solid'>
+                        KYB
+                      </Button>
+                      <Button leftIcon={<EditIcon />} colorScheme='purple' variant='outline'>
+                        Edit
+                      </Button>
+                      <Button rightIcon={<ArrowForwardIcon />} colorScheme='purple' variant='outline' onClick={handleLogout}>
+                        Log out
+                      </Button>
+                    </Stack>
+                  </ButtonGroup>
+                </Box>
+
+                <Box display="flex" flexDirection="column" gap={2}>
+                  <Box backgroundColor='rgba(205, 205, 205, 0.4)' display="inline-flex" alignItems={'center'} gap={3} px={3} borderRadius={7} width="max-content">
+                    <Text>
+                      EVM
+                    </Text>
+                    <Text
+                      borderLeft="1px solid red"
+                      borderRight="1px solid red"
+                      px={2}
+                      borderColor="rgba(116, 116, 116, 1)"
+                    >
+                      0x4UD58Hgr4HD68…58WxY37bctUo48e
+                    </Text>
+                    <Icon as={FaShieldAlt} />
+                  </Box>
+                  <Box backgroundColor='rgba(205, 205, 205, 0.4)' display="inline-flex" alignItems={'center'} gap={3} px={3} borderRadius={7} width="max-content">
+                    <Text>
+                      MVX
+                    </Text>
+                    <Text
+                      borderLeft="1px solid red"
+                      borderRight="1px solid red"
+                      px={2}
+                      borderColor="rgba(116, 116, 116, 1)"
+                    >
+                      0x4UD58Hgr4HD68…58WxY37bctUo48e
+                    </Text>
+                    <Icon as={FaShieldAlt} />
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+            <Box>
+              <Heading my={8}>Mes projets</Heading>
+              {/* afficher les projets qui corresponde à l'entreprise */}
+            </Box>
           </>
         )}
       </Box>
