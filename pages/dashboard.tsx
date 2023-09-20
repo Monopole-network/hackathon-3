@@ -10,6 +10,8 @@ const Dashboard: React.FC = () => {
   const [currentAccount, setCurrentAccount] = useState<any | null>(null);
   const [showLoginForm, setShowLoginForm] = useState<boolean>(false);
   const [showRegistrationForm, setShowRegistrationForm] = useState<boolean>(false);
+  const [firstWallet, setFirstWallet] = useState<boolean>(false);
+  const [secondWallet, setSecondWallet] = useState<boolean>(false);
 
   const handleLogout = () => {
     localStorage.removeItem('currentAccount');
@@ -109,34 +111,46 @@ const Dashboard: React.FC = () => {
                 </Box>
 
                 <Box display="flex" flexDirection="column" gap={2}>
-                  <Box backgroundColor='rgba(205, 205, 205, 0.4)' display="inline-flex" alignItems={'center'} gap={3} px={3} borderRadius={7} width="max-content">
-                    <Text>
-                      EVM
-                    </Text>
-                    <Text
-                      borderLeft="1px solid red"
-                      borderRight="1px solid red"
-                      px={2}
-                      borderColor="rgba(116, 116, 116, 1)"
-                    >
-                      0x4UD58Hgr4HD68…58WxY37bctUo48e
-                    </Text>
-                    <Icon as={FaShieldAlt} />
-                  </Box>
-                  <Box backgroundColor='rgba(205, 205, 205, 0.4)' display="inline-flex" alignItems={'center'} gap={3} px={3} borderRadius={7} width="max-content">
-                    <Text>
-                      MVX
-                    </Text>
-                    <Text
-                      borderLeft="1px solid red"
-                      borderRight="1px solid red"
-                      px={2}
-                      borderColor="rgba(116, 116, 116, 1)"
-                    >
-                      0x4UD58Hgr4HD68…58WxY37bctUo48e
-                    </Text>
-                    <Icon as={FaShieldAlt} />
-                  </Box>
+                  {firstWallet && (
+                    <>
+                    <Box backgroundColor='rgba(205, 205, 205, 0.4)' display="inline-flex" alignItems={'center'} gap={3} px={3} borderRadius={7} width="max-content">
+                      <Text>
+                        EVM
+                      </Text>
+                      <Text
+                        borderLeft="1px solid red"
+                        borderRight="1px solid red"
+                        px={2}
+                        borderColor="rgba(116, 116, 116, 1)"
+                      >
+                        0x4UD58Hgr4HD68…58WxY37bctUo48e
+                      </Text>
+                      <Icon as={FaShieldAlt} />
+                    </Box>
+                    {!secondWallet && (
+                      <Button onClick={() => setSecondWallet(true)} colorScheme='purple' display="inline-flex" width="max-content">Lier une autre wallet</Button>
+                    )}
+                    </>
+                  )}
+                  {secondWallet && (
+                    <Box backgroundColor='rgba(205, 205, 205, 0.4)' display="inline-flex" alignItems={'center'} gap={3} px={3} borderRadius={7} width="max-content">
+                      <Text>
+                        MVX
+                      </Text>
+                      <Text
+                        borderLeft="1px solid red"
+                        borderRight="1px solid red"
+                        px={2}
+                        borderColor="rgba(116, 116, 116, 1)"
+                      >
+                        0x4UD58Hgr4HD68…58WxY37bctUo48e
+                      </Text>
+                      <Icon as={FaShieldAlt} />
+                    </Box>
+                  )}
+                  {!firstWallet && (
+                    <Button onClick={() => setFirstWallet(true)} display="inline-flex" width="max-content" colorScheme='purple'>Lier mon wallet à l'entreprise</Button>
+                  )}
                 </Box>
               </Box>
             </Box>
