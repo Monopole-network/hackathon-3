@@ -3,7 +3,7 @@ import RegistrationForm from '../components/RegistrationForm';
 import LoginForm from '../components/LoginForm';
 import { Box, Button, ButtonGroup, CloseButton, Flex, Heading, Icon, Image, Stack, Text } from '@chakra-ui/react';
 import { ArrowForwardIcon, CheckIcon, EditIcon } from '@chakra-ui/icons';
-import { FaShieldAlt } from 'react-icons/fa';
+import { FaCreditCard, FaShieldAlt, FaTrash } from 'react-icons/fa';
 
 const Dashboard: React.FC = () => {
   const [connected, setConnected] = useState<boolean>(false);
@@ -12,6 +12,7 @@ const Dashboard: React.FC = () => {
   const [showRegistrationForm, setShowRegistrationForm] = useState<boolean>(false);
   const [firstWallet, setFirstWallet] = useState<boolean>(false);
   const [secondWallet, setSecondWallet] = useState<boolean>(false);
+  const [accountBank, setAccountBank] = useState<boolean>(false);
 
   const handleLogout = () => {
     localStorage.removeItem('currentAccount');
@@ -26,6 +27,19 @@ const Dashboard: React.FC = () => {
     if (storedAccount) {
       setCurrentAccount(JSON.parse(storedAccount));
       setConnected(true);
+    }
+
+    const storedFirstWallet = localStorage.getItem('firstWallet');
+    const storedSecondWallet = localStorage.getItem('secondWallet');
+    const storedAccountBank = localStorage.getItem('accountBank');
+    if (storedFirstWallet) {
+      setFirstWallet(JSON.parse(storedFirstWallet));
+    }
+    if (storedSecondWallet) {
+      setSecondWallet(JSON.parse(storedSecondWallet));
+    }
+    if (storedAccountBank) {
+      setAccountBank(JSON.parse(storedAccountBank));
     }
   }, []);
 
@@ -42,6 +56,36 @@ const Dashboard: React.FC = () => {
   const handleCloseForm = () => {
     setShowLoginForm(false);
     setShowRegistrationForm(false);
+  };
+
+  const handleFirstWalletClick = () => {
+    setFirstWallet(true);
+    localStorage.setItem('firstWallet', JSON.stringify(true));
+  };
+
+  const handleSecondWalletClick = () => {
+    setSecondWallet(true);
+    localStorage.setItem('secondWallet', JSON.stringify(true));
+  };
+
+  const handleAccountBankClick = () => {
+    setAccountBank(true);
+    localStorage.setItem('accountBank', JSON.stringify(true));
+  };
+
+  const handleRemoveFirstWallet = () => {
+    setFirstWallet(false);
+    localStorage.removeItem('firstWallet');
+  };
+  
+  const handleRemoveSecondWallet = () => {
+    setSecondWallet(false);
+    localStorage.removeItem('secondWallet');
+  };
+  
+  const handleRemoveAccountBank = () => {
+    setAccountBank(false);
+    localStorage.removeItem('accountBank');
   };
 
   return (
@@ -111,6 +155,25 @@ const Dashboard: React.FC = () => {
                 </Box>
 
                 <Box display="flex" flexDirection="column" gap={2}>
+                  {accountBank && (
+                    <Box backgroundColor='rgba(205, 205, 205, 0.4)' display="inline-flex" alignItems={'center'} gap={3} px={3} borderRadius={7} width="max-content">
+                      <Text>
+                        AXA
+                      </Text>
+                      <Text
+                        borderLeft="1px solid red"
+                        borderRight="1px solid red"
+                        px={2}
+                        borderColor="rgba(116, 116, 116, 1)"
+                      >
+                        ... 5912
+                      </Text>
+                      <Icon as={FaCreditCard} />
+                      <Button onClick={handleRemoveAccountBank} colorScheme="red" variant="link">
+                        <Icon height="12px" width="12px" as={FaTrash}/>
+                      </Button>
+                    </Box>
+                  )}
                   {firstWallet && (
                     <>
                     <Box backgroundColor='rgba(205, 205, 205, 0.4)' display="inline-flex" alignItems={'center'} gap={3} px={3} borderRadius={7} width="max-content">
@@ -126,9 +189,12 @@ const Dashboard: React.FC = () => {
                         0x4UD58Hgr4HD68…58WxY37bctUo48e
                       </Text>
                       <Icon as={FaShieldAlt} />
+                      <Button onClick={handleRemoveFirstWallet} colorScheme="red" variant="link">
+                        <Icon height="12px" width="12px" as={FaTrash}/>
+                      </Button>
                     </Box>
                     {!secondWallet && (
-                      <Button onClick={() => setSecondWallet(true)} colorScheme='purple' display="inline-flex" width="max-content">Lier une autre wallet</Button>
+                      <Button onClick={handleSecondWalletClick} colorScheme='purple' display="inline-flex" width="max-content">Lier une autre wallet</Button>
                     )}
                     </>
                   )}
@@ -146,17 +212,23 @@ const Dashboard: React.FC = () => {
                         0x4UD58Hgr4HD68…58WxY37bctUo48e
                       </Text>
                       <Icon as={FaShieldAlt} />
+                      <Button onClick={handleRemoveSecondWallet} colorScheme="red" variant="link">
+                        <Icon height="12px" width="12px" as={FaTrash}/>
+                      </Button>
                     </Box>
                   )}
                   {!firstWallet && (
-                    <Button onClick={() => setFirstWallet(true)} display="inline-flex" width="max-content" colorScheme='purple'>Lier mon wallet à l'entreprise</Button>
+                    <Button onClick={handleFirstWalletClick} display="inline-flex" width="max-content" colorScheme='purple'>Lier mon wallet à l'entreprise</Button>
+                  )}
+                  {!accountBank && (
+                    <Button onClick={handleAccountBankClick} display="inline-flex" width="max-content" colorScheme='purple'>Lier un compte bancaire à l'entreprise</Button>
                   )}
                 </Box>
               </Box>
             </Box>
             <Box>
               <Heading my={8}>Mes projets</Heading>
-              {/* afficher les projets qui corresponde à l'entreprise */}
+              {/* afficher les projets qui correspondent à l'entreprise */}
             </Box>
           </>
         )}
