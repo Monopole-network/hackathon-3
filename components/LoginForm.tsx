@@ -1,3 +1,4 @@
+import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
 interface LoginFormProps {
@@ -18,48 +19,40 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Récupérer les données du localStorage
         const storedAccounts = JSON.parse(localStorage.getItem('companyData') || '[]');
 
-        // Vérifier si le courriel et le mot de passe correspondent à un compte
         const matchingAccount = storedAccounts.find((account: any) => {
             return account.email === formData.email && account.password === formData.password;
         });
 
         if (matchingAccount) {
-            // Si un compte correspond, déclencher la fonction onLogin avec les données du compte
             onLogin(matchingAccount);
         } else {
-            // Si aucune correspondance n'est trouvée, afficher un message d'erreur
             console.error('Identifiants incorrects');
         }
     };
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="email">Email :</label>
-                <input
-                    type="email"
+            <FormControl>
+                <FormLabel>Adresse mail</FormLabel>
+                <Input type='email'
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    required
-                />
-            </div>
-            <div>
-                <label htmlFor="password">Mot de passe :</label>
-                <input
-                    type="password"
+                    required/>
+            </FormControl>
+            <FormControl>
+                <FormLabel>Mot de passe</FormLabel>
+                <Input type="password"
                     id="password"
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    required
-                />
-            </div>
-            <button type="submit">Se connecter</button>
+                    required/>
+            </FormControl>
+            <Button my="4" w="100%" type="submit" colorScheme='purple'>Se connecter</Button>
         </form>
     );
 };

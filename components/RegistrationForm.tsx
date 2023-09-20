@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react';
 
 const RegistrationForm: React.FC = () => {
     const router = useRouter();
@@ -47,9 +48,9 @@ const RegistrationForm: React.FC = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="companyName">Nom:</label>
-                <input
+            <FormControl>
+                <FormLabel>Nom</FormLabel>
+                <Input 
                     type="text"
                     id="companyName"
                     name="companyName"
@@ -57,10 +58,10 @@ const RegistrationForm: React.FC = () => {
                     onChange={handleChange}
                     required
                 />
-            </div>
-            <div>
-                <label htmlFor="companySiret">SIRET:</label>
-                <input
+            </FormControl>
+            <FormControl>
+                <FormLabel>SIRET</FormLabel>
+                <Input 
                     type="text"
                     id="companySiret"
                     name="companySiret"
@@ -68,10 +69,10 @@ const RegistrationForm: React.FC = () => {
                     onChange={handleChange}
                     required
                 />
-            </div>
-            <div>
-                <label htmlFor="email">Email:</label>
-                <input
+            </FormControl>
+            <FormControl>
+                <FormLabel>Adresse mail</FormLabel>
+                <Input 
                     type="email"
                     id="email"
                     name="email"
@@ -79,10 +80,10 @@ const RegistrationForm: React.FC = () => {
                     onChange={handleChange}
                     required
                 />
-            </div>
-            <div>
-                <label htmlFor="password">Mot de passe:</label>
-                <input
+            </FormControl>
+            <FormControl>
+                <FormLabel>Mot de passe</FormLabel>
+                <Input 
                     type="password"
                     id="password"
                     name="password"
@@ -90,8 +91,8 @@ const RegistrationForm: React.FC = () => {
                     onChange={handleChange}
                     required
                 />
-            </div>
-            <button type="submit">S'inscrire</button>
+            </FormControl>
+            <Button my="4" w="100%" type="submit" colorScheme='purple'>S'inscrire</Button>
             {errorMessage && <p>{errorMessage}</p>}
         </form>
     );
