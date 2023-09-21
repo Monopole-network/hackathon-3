@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import SearchBar from '../components/SearchBar';
-import LocalStorageData from '../components/LocalStorageData'; // Importez le composant LocalStorageData
+import LocalStorageData from '../components/LocalStorageData';
 
 const Home: NextPage = () => {
   const dispatch = useDispatch<AppDispatch>();
