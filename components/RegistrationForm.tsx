@@ -12,7 +12,7 @@ const RegistrationForm: React.FC = () => {
         password: '',
     });
 
-    const [errorMessage, setErrorMessage] = useState<string>(''); // Pour afficher un message d'erreur
+    const [errorMessage, setErrorMessage] = useState<string>('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -21,16 +21,14 @@ const RegistrationForm: React.FC = () => {
 
     const handleLogin = (accountData: any) => {
         localStorage.setItem('currentAccount', JSON.stringify(accountData));
-        window.location.reload(); // Actualiser la page
+        window.location.reload();
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Récupérer les données existantes du localStorage
         const existingData = JSON.parse(localStorage.getItem('companyData') || '[]');
 
-        // Vérifier si le SIRET ou l'adresse e-mail sont déjà utilisés
         const isSiretUsed = existingData.some((data: any) => data.companySiret === formData.companySiret);
         const isEmailUsed = existingData.some((data: any) => data.email === formData.email);
 
@@ -39,7 +37,6 @@ const RegistrationForm: React.FC = () => {
         } else if (isEmailUsed) {
             setErrorMessage('L\'adresse e-mail est déjà utilisée.');
         } else {
-            // Si le SIRET et l'adresse e-mail ne sont pas déjà utilisés, ajoutez les données au localStorage
             existingData.push(formData);
             localStorage.setItem('companyData', JSON.stringify(existingData));
             handleLogin(formData);

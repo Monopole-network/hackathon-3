@@ -4,9 +4,6 @@ import { FaHeart, FaSeedling, FaUsers } from 'react-icons/fa';
 
 
 const Project = () => {
-
-
-  // Fonction pour récupérer les données depuis le local storage
   const retrieveDataFromLocalStorage = () => {
     const retrievedDataString = localStorage.getItem('allFormResponses');
     if (retrievedDataString) {
@@ -16,11 +13,8 @@ const Project = () => {
     return [];
   };
 
-  // State pour contenir les données récupérées
-  // const [localData, setLocalData] = useState([]);
   const [localData, setLocalData] = useState<any[]>([])
 
-  // Effet pour récupérer les données depuis le local storage lors du montage du composant
   useEffect(() => {
     const retrievedData = retrieveDataFromLocalStorage();
     setLocalData(retrievedData);
