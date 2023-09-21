@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Box, FormControl, Heading, FormLabel, Input, Textarea, Button, Checkbox, Stack} from '@chakra-ui/react'
+import { Box, Flex, FormControl, Heading, FormLabel, Input, Textarea, Button, Checkbox, Stack } from '@chakra-ui/react'
 import { Form } from 'react-router-dom'
 
 
-export default function project() {
+
+export default function Project() {
 
     const router = useRouter();
 
@@ -20,7 +21,7 @@ export default function project() {
         4: [],
         5: [],
     });
-      
+
 
     const nextStep = () => {
         setStep(step + 1);
@@ -52,7 +53,7 @@ export default function project() {
         };
         console.log(checkedValues);
         const existingResponsesString = localStorage.getItem('allFormResponses');
-        const existingResponses = existingResponsesString ? JSON.parse(existingResponsesString) : [];   
+        const existingResponses = existingResponsesString ? JSON.parse(existingResponsesString) : [];
         const updatedResponses = [...existingResponses, formResponses];
         setAllFormResponses(updatedResponses);
         localStorage.setItem('allFormResponses', JSON.stringify(updatedResponses));
@@ -82,107 +83,107 @@ export default function project() {
 
         router.push('./dashboard');
     };
-      
+
 
     const handleChangeCheckbox = (step: number, value: string) => {
         setCheckedValues((prevValues) => {
             const updatedValues = {
                 ...prevValues,
                 [step]: (prevValues[step] || []).includes(value)
-                  ? (prevValues[step] || []).filter((item) => item !== value)
-                  : [...(prevValues[step] || []), value],
-              };
-          
-          localStorage.setItem('checkedValues', JSON.stringify(updatedValues));
-          
-          return updatedValues; 
+                    ? (prevValues[step] || []).filter((item) => item !== value)
+                    : [...(prevValues[step] || []), value],
+            };
+
+            localStorage.setItem('checkedValues', JSON.stringify(updatedValues));
+
+            return updatedValues;
         });
-      };
-      
-      
+    };
+
 
     return (
-        <Box maxW="1000px" my={10} mx={10}>
-            {step === 1 &&(
+        <Flex w="100%" backgroundRepeat="no-repeat" backgroundSize="100%" flexDirection="column"> 
+        <Box maxW="1000px" my={10} w="90%" mx="auto" pt="20px">
+            {step === 1 && (
                 <>
                     <FormControl isRequired mb='40px'>
                         <FormLabel>Project name :</FormLabel>
-                        <Input type="text" name="title" onChange={handleChange} value={formData.title}/>
+                        <Input type="text" name="title" onChange={handleChange} value={formData.title} />
                     </FormControl>
 
                     <FormControl isRequired mb='40px'>
                         <FormLabel>Location :</FormLabel>
-                        <Input type="text" name="location" onChange={handleChange} value={formData.location}/>
+                        <Input type="text" name="location" onChange={handleChange} value={formData.location} />
                     </FormControl>
 
                     <FormControl isRequired mb='40px'>
                         <FormLabel>About the project :</FormLabel>
-                        <Textarea placeholder='decriver votre projet' name="description" onChange={handleChange} value={formData.description}/>
+                        <Textarea placeholder='decriver votre projet' name="description" onChange={handleChange} value={formData.description} />
                     </FormControl>
 
                     <FormControl isRequired mb='40px'>
                         <FormLabel>Environmental action :</FormLabel>
-                        <Input type="text" name="environmentalAction" onChange={handleChange} value={formData.environmentalAction}/>
+                        <Input type="text" name="environmentalAction" onChange={handleChange} value={formData.environmentalAction} />
                     </FormControl>
 
                     <FormControl isRequired mb='40px'>
                         <FormLabel>Company mission :</FormLabel>
-                        <Input type="text" name="companyMission" onChange={handleChange} value={formData.companyMission}/>
+                        <Input type="text" name="companyMission" onChange={handleChange} value={formData.companyMission} />
                     </FormControl>
                 </>
             )}
-            {step === 2 &&(
+            {step === 2 && (
                 <>
                     <Box>
-                    <Heading>Social criteral</Heading>
+                        <Heading>Social criteral</Heading>
 
-                    <Heading size='md' my={4}>How does your project or company contribute to improving individuals' quality of life?</Heading>
+                        <Heading size='md' my={4}>How does your project or company contribute to improving individuals`&apos;` quality of life?</Heading>
 
-                    <FormControl display="flex" alignItems="center">
-                        <Checkbox
-                            name="2A"
-                            checked={checkedValues[step] ?checkedValues[step].includes('2A') : false}
-                            onChange={() => handleChangeCheckbox(step, '2A')}/>
-                        <FormLabel ml="10px">A. Poverty reduction</FormLabel>
-                    </FormControl>
+                        <FormControl display="flex" alignItems="center">
+                            <Checkbox
+                                name="2A"
+                                checked={checkedValues[step] ? checkedValues[step].includes('2A') : false}
+                                onChange={() => handleChangeCheckbox(step, '2A')} />
+                            <FormLabel ml="10px">A. Poverty reduction</FormLabel>
+                        </FormControl>
 
-                    <FormControl display="flex" alignItems="center">
-                        <Checkbox
-                            name="2B"
-                            checked={checkedValues[step] ?checkedValues[step].includes('2B') : false}
-                            onChange={() => handleChangeCheckbox(step, '2B')}/>
-                        <FormLabel ml="10px">B. Promotion of access to education</FormLabel>
-                    </FormControl>
+                        <FormControl display="flex" alignItems="center">
+                            <Checkbox
+                                name="2B"
+                                checked={checkedValues[step] ? checkedValues[step].includes('2B') : false}
+                                onChange={() => handleChangeCheckbox(step, '2B')} />
+                            <FormLabel ml="10px">B. Promotion of access to education</FormLabel>
+                        </FormControl>
 
-                    <FormControl display="flex" alignItems="center">
-                        <Checkbox
-                            name="2C"
-                            checked={checkedValues[step] ?checkedValues[step].includes('2C') : false}
-                            onChange={() => handleChangeCheckbox(step, '2C')}/>
-                        <FormLabel ml="10px">C. Support for gender equality</FormLabel>
-                    </FormControl>
+                        <FormControl display="flex" alignItems="center">
+                            <Checkbox
+                                name="2C"
+                                checked={checkedValues[step] ? checkedValues[step].includes('2C') : false}
+                                onChange={() => handleChangeCheckbox(step, '2C')} />
+                            <FormLabel ml="10px">C. Support for gender equality</FormLabel>
+                        </FormControl>
 
-                    <FormControl display="flex" alignItems="center">
-                        <Checkbox
-                            name="2D"
-                            checked={checkedValues[step] ?checkedValues[step].includes('2D') : false}
-                            onChange={() => handleChangeCheckbox(step, '2D')}/>
-                        <FormLabel ml="10px">D. Promotion of peace and justice</FormLabel>
-                    </FormControl>
+                        <FormControl display="flex" alignItems="center">
+                            <Checkbox
+                                name="2D"
+                                checked={checkedValues[step] ? checkedValues[step].includes('2D') : false}
+                                onChange={() => handleChangeCheckbox(step, '2D')} />
+                            <FormLabel ml="10px">D. Promotion of peace and justice</FormLabel>
+                        </FormControl>
 
-                    <FormControl display="flex" alignItems="center">
-                        <Checkbox
-                            name="2E"
-                            checked={checkedValues[step] ?checkedValues[step].includes('2E') : false}
-                            onChange={() => handleChangeCheckbox(step, '2E')}/>
-                        <FormLabel ml="10px">E. None of the 4</FormLabel>
-                    </FormControl>
+                        <FormControl display="flex" alignItems="center">
+                            <Checkbox
+                                name="2E"
+                                checked={checkedValues[step] ? checkedValues[step].includes('2E') : false}
+                                onChange={() => handleChangeCheckbox(step, '2E')} />
+                            <FormLabel ml="10px">E. None of the 4</FormLabel>
+                        </FormControl>
                     </Box>
                 </>
             )}
-            {step === 3 &&(
+            {step === 3 && (
                 <>
-                   <Heading>Environmental Criteria</Heading>
+                    <Heading>Environmental Criteria</Heading>
 
                     <Heading size='md' my={4}>How does your project or company work towards environmental preservation?</Heading>
 
@@ -190,15 +191,15 @@ export default function project() {
                         <Checkbox
                             name="3A"
                             checked={checkedValues[step] ? checkedValues[step].includes('3A') : false}
-                            onChange={() => handleChangeCheckbox(step, '3A')}/>
+                            onChange={() => handleChangeCheckbox(step, '3A')} />
                         <FormLabel ml="10px">A. Protection of water and water resources</FormLabel>
                     </FormControl>
 
                     <FormControl display="flex" alignItems="center">
                         <Checkbox
                             name="3B"
-                            checked={checkedValues[step] ?checkedValues[step].includes('3B') : false}
-                            onChange={() => handleChangeCheckbox(step, '3B')}/>
+                            checked={checkedValues[step] ? checkedValues[step].includes('3B') : false}
+                            onChange={() => handleChangeCheckbox(step, '3B')} />
                         <FormLabel ml="10px">B. Promotion of clean energy sources</FormLabel>
                     </FormControl>
 
@@ -206,7 +207,7 @@ export default function project() {
                         <Checkbox
                             name="3C"
                             checked={checkedValues[step] ? checkedValues[step].includes('3C') : false}
-                            onChange={() => handleChangeCheckbox(step, '3C')}/>
+                            onChange={() => handleChangeCheckbox(step, '3C')} />
                         <FormLabel ml="10px">C. Reduction of waste and pollution</FormLabel>
                     </FormControl>
 
@@ -214,7 +215,7 @@ export default function project() {
                         <Checkbox
                             name="3D"
                             checked={checkedValues[step] ? checkedValues[step].includes('3D') : false}
-                            onChange={() => handleChangeCheckbox(step, '3D')}/>
+                            onChange={() => handleChangeCheckbox(step, '3D')} />
                         <FormLabel ml="10px">D. Contribution to the fight against climate change</FormLabel>
                     </FormControl>
 
@@ -222,14 +223,14 @@ export default function project() {
                         <Checkbox
                             name="3E"
                             checked={checkedValues[step] ? checkedValues[step].includes('3E') : false}
-                            onChange={() => handleChangeCheckbox(step, '3E')}/>
+                            onChange={() => handleChangeCheckbox(step, '3E')} />
                         <FormLabel ml="10px">E. None of the 4</FormLabel>
                     </FormControl>
                 </>
             )}
-            {step === 4 &&(
+            {step === 4 && (
                 <>
-                   <Heading>Economic Criteria</Heading>
+                    <Heading>Economic Criteria</Heading>
 
                     <Heading size='md' my={4}>How does your project or company contribute to economic growth and industrial development?</Heading>
 
@@ -237,7 +238,7 @@ export default function project() {
                         <Checkbox
                             name="4A"
                             checked={checkedValues[step] ? checkedValues[step].includes('4A') : false}
-                            onChange={() => handleChangeCheckbox(step, '4A')}/>
+                            onChange={() => handleChangeCheckbox(step, '4A')} />
                         <FormLabel ml="10px">A. Job creation and decent work</FormLabel>
                     </FormControl>
 
@@ -245,7 +246,7 @@ export default function project() {
                         <Checkbox
                             name="4B"
                             checked={checkedValues[step] ? checkedValues[step].includes('4B') : false}
-                            onChange={() => handleChangeCheckbox(step, '4B')}/>
+                            onChange={() => handleChangeCheckbox(step, '4B')} />
                         <FormLabel ml="10px">B. Encouragement of innovation and sustainable infrastructure</FormLabel>
                     </FormControl>
 
@@ -253,7 +254,7 @@ export default function project() {
                         <Checkbox
                             name="4C"
                             checked={checkedValues[step] ? checkedValues[step].includes('4C') : false}
-                            onChange={() => handleChangeCheckbox(step, '4C')}/>
+                            onChange={() => handleChangeCheckbox(step, '4C')} />
                         <FormLabel ml="10px">C. Promotion of financial inclusion</FormLabel>
                     </FormControl>
 
@@ -261,7 +262,7 @@ export default function project() {
                         <Checkbox
                             name="4D"
                             checked={checkedValues[step] ? checkedValues[step].includes('4D') : false}
-                            onChange={() => handleChangeCheckbox(step, '4D')}/>
+                            onChange={() => handleChangeCheckbox(step, '4D')} />
                         <FormLabel ml="10px">D. Support for small and medium-sized enterprises (SMEs)</FormLabel>
                     </FormControl>
 
@@ -269,14 +270,14 @@ export default function project() {
                         <Checkbox
                             name="4E"
                             checked={checkedValues[step] ? checkedValues[step].includes('4E') : false}
-                            onChange={() => handleChangeCheckbox(step, '4E')}/>
+                            onChange={() => handleChangeCheckbox(step, '4E')} />
                         <FormLabel ml="10px">E. None of the 4</FormLabel>
                     </FormControl>
                 </>
             )}
-            {step === 5 &&(
+            {step === 5 && (
                 <>
-                   <Heading>Charity Criteria</Heading>
+                    <Heading>Charity Criteria</Heading>
 
                     <Heading size='md' my={4}>How does your project or company collaborate with other stakeholders to achieve the SDGs?</Heading>
 
@@ -284,7 +285,7 @@ export default function project() {
                         <Checkbox
                             name="5A"
                             checked={checkedValues[step] ? checkedValues[step].includes('5A') : false}
-                            onChange={() => handleChangeCheckbox(step, '5A')}/>
+                            onChange={() => handleChangeCheckbox(step, '5A')} />
                         <FormLabel ml="10px">A. Partnership with NGOs</FormLabel>
                     </FormControl>
 
@@ -292,7 +293,7 @@ export default function project() {
                         <Checkbox
                             name="5B"
                             checked={checkedValues[step] ? checkedValues[step].includes('5B') : false}
-                            onChange={() => handleChangeCheckbox(step, '5B')}/>
+                            onChange={() => handleChangeCheckbox(step, '5B')} />
                         <FormLabel ml="10px">B. Collaboration with local governments</FormLabel>
                     </FormControl>
 
@@ -300,7 +301,7 @@ export default function project() {
                         <Checkbox
                             name="5C"
                             checked={checkedValues[step] ? checkedValues[step].includes('5C') : false}
-                            onChange={() => handleChangeCheckbox(step, '5C')}/>
+                            onChange={() => handleChangeCheckbox(step, '5C')} />
                         <FormLabel ml="10px">C. Engagement with other companies</FormLabel>
                     </FormControl>
 
@@ -308,7 +309,7 @@ export default function project() {
                         <Checkbox
                             name="5D"
                             checked={checkedValues[step] ? checkedValues[step].includes('5D') : false}
-                            onChange={() => handleChangeCheckbox(step, '5D')}/>
+                            onChange={() => handleChangeCheckbox(step, '5D')} />
                         <FormLabel ml="10px">D. Support for community volunteer initiatives</FormLabel>
                     </FormControl>
 
@@ -316,7 +317,7 @@ export default function project() {
                         <Checkbox
                             name="5E"
                             checked={checkedValues[step] ? checkedValues[step].includes('5E') : false}
-                            onChange={() => handleChangeCheckbox(step, '5E')}/>
+                            onChange={() => handleChangeCheckbox(step, '5E')} />
                         <FormLabel ml="10px">E. None of the 4</FormLabel>
                     </FormControl>
                 </>
@@ -328,5 +329,7 @@ export default function project() {
                 <Button my={5} onClick={handleSubmit}>Submit</Button>
             )}
         </Box>
+        </Flex>
+
     )
 }
