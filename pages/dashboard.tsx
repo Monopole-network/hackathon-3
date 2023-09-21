@@ -4,7 +4,7 @@ import LocalStorageData from '../components/LocalStorageData';
 import LoginForm from '../components/LoginForm';
 import { Box, Button, ButtonGroup, CloseButton, Flex, Heading, Icon, Image, Stack, Text } from '@chakra-ui/react';
 import { ArrowForwardIcon, CheckIcon, EditIcon } from '@chakra-ui/icons';
-import { FaCreditCard, FaShieldAlt, FaTrash } from 'react-icons/fa';
+import { FaCreditCard, FaEthereum, FaShieldAlt, FaTrash } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 
 
@@ -182,6 +182,7 @@ const Dashboard: React.FC = () => {
                   {firstWallet && (
                     <>
                     <Box backgroundColor='rgba(205, 205, 205, 0.4)' display="inline-flex" alignItems={'center'} gap={3} px={3} borderRadius={7} width="max-content">
+                      <Icon height="12px" width="12px" as={FaEthereum}></Icon>
                       <Text>
                         EVM
                       </Text>
@@ -205,6 +206,12 @@ const Dashboard: React.FC = () => {
                   )}
                   {secondWallet && (
                     <Box backgroundColor='rgba(205, 205, 205, 0.4)' display="inline-flex" alignItems={'center'} gap={3} px={3} borderRadius={7} width="max-content">
+                      <Image
+                        src="/MVX.png"
+                        alt=""
+                        height="12px"
+                        width="12px"
+                      />
                       <Text>
                         MVX
                       </Text>
@@ -223,7 +230,7 @@ const Dashboard: React.FC = () => {
                     </Box>
                   )}
                   {!firstWallet && (
-                    <Button onClick={handleFirstWalletClick} display="inline-flex" width="max-content" >Link my wallet to the company</Button>
+                    <Button onClick={handleFirstWalletClick} display="inline-flex" width="max-content" variant="outline">Link my wallet to the company</Button>
                   )}
                   {!accountBank && (
                     <Button onClick={handleAccountBankClick} display="inline-flex" width="max-content" variant='outline'> Link a bank account to the company</Button>
