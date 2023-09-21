@@ -4,6 +4,8 @@ import LoginForm from '../components/LoginForm';
 import { Box, Button, ButtonGroup, CloseButton, Flex, Heading, Icon, Image, Stack, Text } from '@chakra-ui/react';
 import { ArrowForwardIcon, CheckIcon, EditIcon } from '@chakra-ui/icons';
 import { FaCreditCard, FaShieldAlt, FaTrash } from 'react-icons/fa';
+import { useRouter } from 'next/router';
+
 
 const Dashboard: React.FC = () => {
   const [connected, setConnected] = useState<boolean>(false);
@@ -13,6 +15,8 @@ const Dashboard: React.FC = () => {
   const [firstWallet, setFirstWallet] = useState<boolean>(false);
   const [secondWallet, setSecondWallet] = useState<boolean>(false);
   const [accountBank, setAccountBank] = useState<boolean>(false);
+
+  const router = useRouter();
 
   const handleLogout = () => {
     localStorage.removeItem('currentAccount');
@@ -99,17 +103,17 @@ const Dashboard: React.FC = () => {
               <>
                 <Box textAlign="center" display="flex" gap={10} flexDirection="column">
                   <Box display="flex" mx="auto" flexDirection="column" gap={3}>
-                    <h2>Client</h2>
+                    <h2>Customer</h2>
                     <Box display="flex" gap={5} mx="auto">
-                      <Button>Connexion</Button>
-                      <Button>Inscription</Button>
+                      <Button>Sign In</Button>
+                      <Button>Sign Up</Button>
                     </Box>
                   </Box>
                   <Box display="flex" mx="auto" flexDirection="column" gap={3}>
-                    <h2>Entreprise</h2>
+                    <h2>Company</h2>
                     <Box display="flex" gap={5} mx="auto">
-                      <Button onClick={handleLoginClick}>Connexion</Button>
-                      <Button onClick={handleRegistrationClick}>Inscription</Button>
+                      <Button onClick={handleLoginClick}>Sign In</Button>
+                      <Button onClick={handleRegistrationClick}>Sign Up</Button>
                     </Box>
                   </Box>
                 </Box>
@@ -218,16 +222,17 @@ const Dashboard: React.FC = () => {
                     </Box>
                   )}
                   {!firstWallet && (
-                    <Button onClick={handleFirstWalletClick} display="inline-flex" width="max-content" colorScheme='purple'>Lier mon wallet à l'entreprise</Button>
+                    <Button onClick={handleFirstWalletClick} display="inline-flex" width="max-content" colorScheme='purple'>Link my wallet to the company</Button>
                   )}
                   {!accountBank && (
-                    <Button onClick={handleAccountBankClick} display="inline-flex" width="max-content" colorScheme='purple'>Lier un compte bancaire à l'entreprise</Button>
+                    <Button onClick={handleAccountBankClick} display="inline-flex" width="max-content" colorScheme='purple'> Link a bank account to the company</Button>
                   )}
                 </Box>
               </Box>
             </Box>
             <Box>
-              <Heading my={8}>Mes projets</Heading>
+              <Heading my={8}>My projects</Heading>
+              <Button onClick={() => router.push('./create_project') } display="inline-flex" width="max-content" colorScheme='purple'>Create a project</Button>
               {/* afficher les projets qui appartiennent à l'entreprise */}
               {/* si pas de projet, bouton pour en créer un */}
             </Box>

@@ -35,7 +35,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
     return (
         <form onSubmit={handleSubmit}>
             <FormControl>
-                <FormLabel>Adresse mail</FormLabel>
+                <FormLabel>Mail</FormLabel>
                 <Input type='email'
                     id="email"
                     name="email"
@@ -44,7 +44,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
                     required/>
             </FormControl>
             <FormControl>
-                <FormLabel>Mot de passe</FormLabel>
+                <FormLabel>Password</FormLabel>
                 <Input type="password"
                     id="password"
                     name="password"
@@ -52,7 +52,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
                     onChange={handleChange}
                     required/>
             </FormControl>
-            <Button my="4" w="100%" type="submit" colorScheme='purple'>Se connecter</Button>
+            <Button my="4" w="100%" type="submit" colorScheme='purple'>Sign In</Button>
         </form>
     );
 };

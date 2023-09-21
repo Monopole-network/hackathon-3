@@ -49,7 +49,7 @@ const RegistrationForm: React.FC = () => {
     return (
         <form onSubmit={handleSubmit}>
             <FormControl>
-                <FormLabel>Nom</FormLabel>
+                <FormLabel>Name</FormLabel>
                 <Input 
                     type="text"
                     id="companyName"
@@ -71,7 +71,7 @@ const RegistrationForm: React.FC = () => {
                 />
             </FormControl>
             <FormControl>
-                <FormLabel>Adresse mail</FormLabel>
+                <FormLabel>Mail</FormLabel>
                 <Input 
                     type="email"
                     id="email"
@@ -82,7 +82,7 @@ const RegistrationForm: React.FC = () => {
                 />
             </FormControl>
             <FormControl>
-                <FormLabel>Mot de passe</FormLabel>
+                <FormLabel>Password</FormLabel>
                 <Input 
                     type="password"
                     id="password"
@@ -92,7 +92,7 @@ const RegistrationForm: React.FC = () => {
                     required
                 />
             </FormControl>
-            <Button my="4" w="100%" type="submit" colorScheme='purple'>S'inscrire</Button>
+            <Button my="4" w="100%" type="submit" colorScheme='purple'>Sign Up</Button>
             {errorMessage && <p>{errorMessage}</p>}
         </form>
     );
