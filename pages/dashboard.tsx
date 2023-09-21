@@ -228,7 +228,8 @@ const Dashboard: React.FC = () => {
             </Box>
             <Box>
               <Heading my={8}>Mes projets</Heading>
-              {/* afficher les projets qui correspondent à l'entreprise */}
+              {/* afficher les projets qui appartiennent à l'entreprise */}
+              {/* si pas de projet, bouton pour en créer un */}
             </Box>
           </>
         )}
