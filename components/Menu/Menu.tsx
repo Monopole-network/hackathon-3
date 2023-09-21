@@ -22,6 +22,7 @@ export default function MainMenu() {
           <CryptoPartnersBtn />
           {!isMobileView && <DashboardBtn />}
         </ButtonGroup>
+
       </Flex>
     </>
   );
