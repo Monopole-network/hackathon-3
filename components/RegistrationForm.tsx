@@ -67,7 +67,6 @@ const RegistrationForm: React.FC = () => {
                     name="companySiret"
                     value={formData.companySiret}
                     onChange={handleChange}
-                    required
                 />
             </FormControl>
             <FormControl>

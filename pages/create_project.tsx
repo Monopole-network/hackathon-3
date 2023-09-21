@@ -121,7 +121,7 @@ export default function Project() {
                     </FormControl>
 
                     <FormControl isRequired mb='40px'>
-                        <FormLabel>Environmental action :</FormLabel>
+                        <FormLabel>Commitment action (Social, Charity, Environmental, Infrastructure, Economy) :</FormLabel>
                         <Input type="text" name="environmentalAction" onChange={handleChange} value={formData.environmentalAction} />
                     </FormControl>
 
@@ -134,9 +134,9 @@ export default function Project() {
             {step === 2 && (
                 <>
                     <Box>
-                        <Heading>Social criteral</Heading>
+                        <Heading color='#8235fe'>Social criteral</Heading>
 
-                        <Heading size='md' my={4}>How does your project or company contribute to improving individuals`&apos;` quality of life?</Heading>
+                        <Heading size='md' my={4}>How does your project or company contribute to improving individuals quality of life?</Heading>
 
                         <FormControl display="flex" alignItems="center">
                             <Checkbox
@@ -182,7 +182,7 @@ export default function Project() {
             )}
             {step === 3 && (
                 <>
-                    <Heading>Environmental Criteria</Heading>
+                    <Heading color='#8235fe'>Environmental Criteria</Heading>
 
                     <Heading size='md' my={4}>How does your project or company work towards environmental preservation?</Heading>
 
@@ -229,7 +229,7 @@ export default function Project() {
             )}
             {step === 4 && (
                 <>
-                    <Heading>Economic Criteria</Heading>
+                    <Heading color='#8235fe'>Economic Criteria</Heading>
 
                     <Heading size='md' my={4}>How does your project or company contribute to economic growth and industrial development?</Heading>
 
@@ -276,7 +276,7 @@ export default function Project() {
             )}
             {step === 5 && (
                 <>
-                    <Heading>Charity Criteria</Heading>
+                    <Heading color='#8235fe'>Charity Criteria</Heading>
 
                     <Heading size='md' my={4}>How does your project or company collaborate with other stakeholders to achieve the SDGs?</Heading>
 
@@ -323,9 +323,9 @@ export default function Project() {
             )}
 
             {step < 5 ? (
-                <Button my={3} onClick={nextStep}>Next</Button>
+                <Button my={3} onClick={nextStep} colorScheme='green'>Next</Button>
             ) : (
-                <Button my={5} onClick={handleSubmit}>Submit</Button>
+                <Button my={5} onClick={handleSubmit} colorScheme='green'>Submit</Button>
             )}
         </Box>
         </Flex>

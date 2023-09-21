@@ -151,7 +151,7 @@ const Dashboard: React.FC = () => {
                       <Button leftIcon={<EditIcon />} colorScheme='purple' variant='outline'>
                         Edit
                       </Button>
-                      <Button rightIcon={<ArrowForwardIcon />} colorScheme='purple' variant='outline' onClick={handleLogout}>
+                      <Button rightIcon={<ArrowForwardIcon />} colorScheme='red' variant='outline' onClick={handleLogout}>
                         Log out
                       </Button>
                     </Stack>
@@ -198,7 +198,7 @@ const Dashboard: React.FC = () => {
                       </Button>
                     </Box>
                     {!secondWallet && (
-                      <Button onClick={handleSecondWalletClick} colorScheme='purple' display="inline-flex" width="max-content">Lier une autre wallet</Button>
+                      <Button onClick={handleSecondWalletClick}  variant='outline' display="inline-flex" width="max-content">Link another wallet</Button>
                     )}
                     </>
                   )}
@@ -222,10 +222,10 @@ const Dashboard: React.FC = () => {
                     </Box>
                   )}
                   {!firstWallet && (
-                    <Button onClick={handleFirstWalletClick} display="inline-flex" width="max-content" colorScheme='purple'>Link my wallet to the company</Button>
+                    <Button onClick={handleFirstWalletClick} display="inline-flex" width="max-content" >Link my wallet to the company</Button>
                   )}
                   {!accountBank && (
-                    <Button onClick={handleAccountBankClick} display="inline-flex" width="max-content" colorScheme='purple'> Link a bank account to the company</Button>
+                    <Button onClick={handleAccountBankClick} display="inline-flex" width="max-content" variant='outline'> Link a bank account to the company</Button>
                   )}
                 </Box>
               </Box>
