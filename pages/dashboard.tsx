@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import RegistrationForm from '../components/RegistrationForm';
+import LocalStorageData from '../components/LocalStorageData';
 import LoginForm from '../components/LoginForm';
 import { Box, Button, ButtonGroup, CloseButton, Flex, Heading, Icon, Image, Stack, Text } from '@chakra-ui/react';
 import { ArrowForwardIcon, CheckIcon, EditIcon } from '@chakra-ui/icons';
@@ -233,8 +234,7 @@ const Dashboard: React.FC = () => {
             <Box>
               <Heading my={8}>My projects</Heading>
               <Button onClick={() => router.push('./create_project') } display="inline-flex" width="max-content" colorScheme='purple'>Create a project</Button>
-              {/* afficher les projets qui appartiennent à l'entreprise */}
-              {/* si pas de projet, bouton pour en créer un */}
+              <LocalStorageData />
             </Box>
           </>
         )}
