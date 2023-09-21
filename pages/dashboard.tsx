@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import RegistrationForm from '../components/RegistrationForm';
+import LocalStorageData from '../components/LocalStorageData';
 import LoginForm from '../components/LoginForm';
 import { Box, Button, ButtonGroup, CloseButton, Flex, Heading, Icon, Image, Stack, Text } from '@chakra-ui/react';
 import { ArrowForwardIcon, CheckIcon, EditIcon } from '@chakra-ui/icons';
@@ -151,7 +152,7 @@ const Dashboard: React.FC = () => {
                       <Button leftIcon={<EditIcon />} colorScheme='purple' variant='outline'>
                         Edit
                       </Button>
-                      <Button rightIcon={<ArrowForwardIcon />} colorScheme='purple' variant='outline' onClick={handleLogout}>
+                      <Button rightIcon={<ArrowForwardIcon />} colorScheme='red' variant='outline' onClick={handleLogout}>
                         Log out
                       </Button>
                     </Stack>
@@ -198,7 +199,7 @@ const Dashboard: React.FC = () => {
                       </Button>
                     </Box>
                     {!secondWallet && (
-                      <Button onClick={handleSecondWalletClick} colorScheme='purple' display="inline-flex" width="max-content">Lier une autre wallet</Button>
+                      <Button onClick={handleSecondWalletClick}  variant='outline' display="inline-flex" width="max-content">Link another wallet</Button>
                     )}
                     </>
                   )}
@@ -222,10 +223,10 @@ const Dashboard: React.FC = () => {
                     </Box>
                   )}
                   {!firstWallet && (
-                    <Button onClick={handleFirstWalletClick} display="inline-flex" width="max-content" colorScheme='purple'>Link my wallet to the company</Button>
+                    <Button onClick={handleFirstWalletClick} display="inline-flex" width="max-content" >Link my wallet to the company</Button>
                   )}
                   {!accountBank && (
-                    <Button onClick={handleAccountBankClick} display="inline-flex" width="max-content" colorScheme='purple'> Link a bank account to the company</Button>
+                    <Button onClick={handleAccountBankClick} display="inline-flex" width="max-content" variant='outline'> Link a bank account to the company</Button>
                   )}
                 </Box>
               </Box>
@@ -233,8 +234,7 @@ const Dashboard: React.FC = () => {
             <Box>
               <Heading my={8}>My projects</Heading>
               <Button onClick={() => router.push('./create_project') } display="inline-flex" width="max-content" colorScheme='purple'>Create a project</Button>
-              {/* afficher les projets qui appartiennent à l'entreprise */}
-              {/* si pas de projet, bouton pour en créer un */}
+              <LocalStorageData />
             </Box>
           </>
         )}
